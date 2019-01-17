@@ -77,40 +77,36 @@ export default function Arena({ letters }) {
   return (
     <div class="arena">
       <input autofocus oninput={handleInput} onkeydown={handleKeyDown} />
-
       <div class="completed-container">
-        {completed.slice(Math.max(completed.length - MAX_LENGTH, 0)).map(letter => (
-          <CompletedCharacter letter={letter} />
+        {completed.slice(Math.max(completed.length - MAX_LENGTH, 0)).map((letter, key) => (
+          <CompletedCharacter key={key} letter={letter} />
         ))}
       </div>
-
       <div class="todo-container">
-        {todo.slice(0, MAX_LENGTH).map(letter => (
-          <TodoCharacter letter={letter} />
+        {todo.slice(0, MAX_LENGTH).map((letter, key) => (
+          <TodoCharacter key={key} letter={letter} />
         ))}
       </div>
-
       <div>
-        <Stat top={"25px"} left={"25px"}>
-          <div>sec</div>
-          <div>{time}</div>
+        <Stat key={0} top={"25px"} left={"25px"}>
+          <div>
+            <div>sec</div>
+            <div>{time}</div>
+          </div>
         </Stat>
-
-        <Stat top={"25px"} right={"25px"}>
+        <Stat key={1} top={"25px"} right={"25px"}>
           <div style={{ color: "white", textAlign: "right" }}>
             <div>correct</div>
             <div>{correctPercent}%</div>
           </div>
         </Stat>
-
-        <Stat bottom={"25px"} right={"25px"}>
+        <Stat key={2} bottom={"25px"} right={"25px"}>
           <div style={{ color: "white", textAlign: "right" }}>
             <div>{wordCount}</div>
             <div>words</div>
           </div>
         </Stat>
-
-        <Stat bottom={"25px"} left={"25px"}>
+        <Stat key={3} bottom={"25px"} left={"25px"}>
           <div>
             <div>{wpm}</div>
             <div>wpm</div>
